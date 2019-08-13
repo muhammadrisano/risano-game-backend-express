@@ -3,7 +3,7 @@ const MiscHelper = require('../helpers/helpers')
 const jwt = require('jsonwebtoken')
 
 module.exports = {
-    getUser = (req, res) => {
+    getUser: (req, res) => {
         const search = req.query.search
         userModels.getUser(search)
             .then((resultUser) => {
@@ -19,7 +19,7 @@ module.exports = {
         userModels.userDetail(id_user)
             .then((resultUser) => {
                 const result = resultUser
-                MistHelper.response(res, result, 200)
+                MiscHelper.response(res, result, 200)
             })
             .catch((error) => {
                 console.log(error)
@@ -51,14 +51,15 @@ module.exports = {
     login: (req, res) => {
         const username = req.body.username
         const password = req.body.password
-        userModels.getByLogin(username)
+        console.log(req.body)
+        userModels.getByUsername(username)
             .then((result) => {
                 const dataUser = result[0]
                 const usePassword = MiscHelper.setPassword(password, dataUser.salt).passwordHash
                 if (usePassword === dataUser.password) {
                     dataUser.token = jwt.sign({
-                        userid: dataUSer.id_user
-                    }, proses.env.SECRET_KEY, { expiresIn: '1h' });
+                        userid: dataUser.id_user
+                    }, process.env.SECRET_KEY, { expiresIn: '1h' });
                     delete dataUser.salt
                     delete dataUser.password
                     return MiscHelper.response(res, dataUser, 200)
