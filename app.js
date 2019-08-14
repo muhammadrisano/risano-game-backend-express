@@ -8,6 +8,7 @@ const xssFilter = require('x-xss-protection');
 const logger = require('morgan')
 const userRoute = require('./src/routers/user')
 const leaderboardRoute = require('./src/routers/leaderboard')
+const patternRoute = require('./src/routers/pattern')
 app.use(cors());
 app.use(xssFilter());
 app.use(logger('dev'))
@@ -18,3 +19,4 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/user', userRoute)
 app.use('/leaderboard', leaderboardRoute)
+app.use('/pattern', patternRoute)
