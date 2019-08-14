@@ -4,6 +4,7 @@ const MiscHelper = require('../helpers/helpers')
 module.exports = {
     getLeaderboard: (req, res) => {
         const page = req.query.page
+        console.log(page)
         leaderboardModels.getLeaderboard(page)
             .then((resultLeader) => {
                 const result = resultLeader
@@ -42,14 +43,13 @@ module.exports = {
             })
     },
     updateLeaderboard: (req, res) => {
-        const id_leaderboard = req.params.id_leaderboard
-        const { id_user, score } = req.body
+        const id_user = req.params.id_user
+        const { score } = req.body
         const data = {
-            id_user,
             score,
             updated_at: new Date()
         }
-        leaderboardModels.updateLeaderboard(id_leaderboard, data)
+        leaderboardModels.updateLeaderboard(id_user, data)
             .then((resultLeader) => {
                 const result = resultLeader
                 MiscHelper.response(res, result, 200)
