@@ -22,9 +22,21 @@ module.exports = {
             }
         })
     },
-    LeaderboardDetail: (id_leaderboard) => {
+    leaderboardDetail: (id_user) => {
+        console.log(id_user)
         return new Promise((resolve, reject) => {
-            connection.query("SELECT id_score, id_user, score, created_at, updated_at, fullname FROM score_points INNER JOIN user ON score_points.id_user = user.id_user WHERE id_leaderboard = ?", id_leaderboard, (err, result) => {
+            connection.query("SELECT id_score, score_points.id_user, score, score_points.created_at, score_points.updated_at,username, fullname FROM score_points INNER JOIN user ON score_points.id_user = user.id_user WHERE score_points.id_user= ?", id_user, (err, result) => {
+                if (!err) {
+                    resolve(result)
+                } else {
+                    reject(new Error(err))
+                }
+            })
+        })
+    },
+    leaderboarduser: (id_user) => {
+        return new Promise((resolve, reject) => {
+            connection.query("SELECT * FROM score_points WHERE id_user = ?", id_user, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
