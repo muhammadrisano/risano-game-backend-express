@@ -2,7 +2,7 @@ const backgroundModels = require('../models/background')
 const MiscHelper = require('../helpers/helpers')
 
 module.exports = {
-    getbackground: (req, res) => {
+    getBackground: (req, res) => {
         backgroundModels.getBackground()
             .then((resultbackground) => {
                 const result = resultbackground
@@ -25,11 +25,12 @@ module.exports = {
             })
     },
     insertBackground: (req, res) => {
-        const { level, music, level } = req.body
+        const { level, music, images, delay } = req.body
         const data = {
             level,
             music,
-            images
+            images,
+            delay
         }
         backgroundModels.insertBackground(data)
             .then((resultbackground) => {
@@ -42,11 +43,12 @@ module.exports = {
     },
     updateBackground: (req, res) => {
         const id_background = req.params.id_background
-        const { level, music, images } = req.body
+        const { level, music, images, delay } = req.body
         const data = {
             level,
             music,
             images,
+            delay
         }
         backgroundModels.updateBackground(id_background, data)
             .then((resultbackground) => {
