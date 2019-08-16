@@ -6,7 +6,7 @@ const Auth = require('../helpers/auth')
 Route
     .all('/*', Auth.authInfo)
     .get('/', leaderboardController.getLeaderboard)
-    .get('/:leaderboard', leaderboardController.leaderboardDetail)
+    .get('/:id_user', leaderboardController.leaderboardDetail)
     .post('/', leaderboardController.insertLeaderboard)
     .patch('/:id_user', leaderboardController.updateLeaderboard)
     .delete('/:id_leaderboard', leaderboardController.deleteLeaderboard)

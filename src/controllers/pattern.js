@@ -26,10 +26,11 @@ module.exports = {
             })
     },
     insertPattern: (req, res) => {
-        const { pattern, delay, level } = req.body
+        const { pattern, delay, plushpoint, level } = req.body
         const data = {
             pattern,
             delay,
+            plushpoint,
             level
         }
         patternModels.insertPattern(data)
@@ -43,10 +44,11 @@ module.exports = {
     },
     updatePattern: (req, res) => {
         const id_pattern = req.params.id_pattern
-        const { pattern, delay, level } = req.body
+        const { pattern, delay, plushpoint, level } = req.body
         const data = {
             pattern,
             delay,
+            plushpoint,
             level,
         }
         patternModels.updatePattern(id_pattern, data)

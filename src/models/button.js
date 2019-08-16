@@ -1,9 +1,9 @@
 require('dotenv').config()
 const connection = require('../configs/db')
 module.exports = {
-    getBackground: () => {
+    getButton: () => {
         return new Promise((resolve, reject) => {
-            connection.query("SELECT * FROM background ", (err, result) => {
+            connection.query("SELECT * FROM button ", (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -12,10 +12,10 @@ module.exports = {
             })
         })
     },
-    backgroundDetail: (id_background) => {
-        console.log(id_background)
+    buttonDetail: (id_button) => {
+        console.log(id_button)
         return new Promise((resolve, reject) => {
-            connection.query("SELECT * FROM background WHERE id_background =?", id_background, (err, result) => {
+            connection.query("SELECT * FROM button WHERE id_button =?", id_button, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -24,9 +24,9 @@ module.exports = {
             })
         })
     },
-    insertBackground: (data) => {
+    insertButton: (data) => {
         return new Promise((resolve, reject) => {
-            connection.query("INSERT INTO background SET ?", data, (err, result) => {
+            connection.query("INSERT INTO button SET ?", data, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -35,9 +35,9 @@ module.exports = {
             })
         })
     },
-    deleteBackground: (id_background) => {
+    deleteButton: (id_button) => {
         return new Promise((resolve, reject) => {
-            connection.query("DELETE FROM background WHERE id_background = ?", id_background, (err, result) => {
+            connection.query("DELETE FROM button WHERE id_button = ?", id_button, (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
@@ -46,9 +46,9 @@ module.exports = {
             })
         })
     },
-    updateBackground: (id_background, data) => {
+    updateButton: (id_button, data) => {
         return new Promise((resolve, reject) => {
-            connection.query("UPDATE background SET ? WHERE id_background = ?", [data, id_background], (err, result) => {
+            connection.query("UPDATE button SET ? WHERE id_button = ?", [data, id_button], (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
