@@ -1,4 +1,4 @@
-# Simple REST Risano Game Book
+# Simple Titak-titak Dididing
 ![](https://img.shields.io/badge/Code%20Style-Standard-yellow.svg)
 ![](https://img.shields.io/badge/Dependencies-Express-green.svg)
 ![](https://img.shields.io/badge/License-Beerware-yellowgreen.svg)
@@ -58,7 +58,7 @@ API_SECRET_BOOKS = "xxxxx"
 $ npm start
 ```
 ## Link Collection Postman
-[Postman](https://www.getpostman.com/collections/fbce4987f2985188f339)
+[Postman](https://www.getpostman.com/collections/57f925d09db4bb0f5a59)
 
 ## Structur Folder
 ```
